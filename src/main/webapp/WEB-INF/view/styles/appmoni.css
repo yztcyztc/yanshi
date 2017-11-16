@@ -1,0 +1,27 @@
+.top-left{
+	float: left;
+	margin:  10px;
+	text-align: center;
+}
+.top-right{
+	float: right;
+	text-align: center;
+	margin:  10px;
+}
+.bottom-left{
+	float: left;
+	margin: 10px ;
+	text-align: center;
+}
+.bottom-right{
+	float: right;
+	margin: 0 10px;
+	text-align: center;
+}
+.background{
+  background-size: cover;
+  background-position: center center;
+  width: 550px;
+  height: 450px; 
+  margin: 25px auto
+}

@@ -1,0 +1,29 @@
+.instance{
+	 background: url("../images/instance1.jpg")  fixed center center ;
+	 background-size: 100% 100%;
+     width:100%;
+}
+
+.abc{
+	 background: url(../images/instance3.jpg)  fixed center center ;
+	 background-size: 100% 100%;
+     width:100%;
+}
+
+#time{
+	position: absolute;	
+	left:150px;
+	top:140px;
+	font-weight: 20px;
+	color:#00F0FF
+}
+
+#preload-01 { 
+	background: url(192.168.43.247:8080/yanshi/test/pic/instance1.jpg) no-repeat -9999px -9999px;
+	 }
+#preload-02 {
+ background: url(192.168.43.247:8080/yanshi/test/pic/instance2.jpg) no-repeat -9999px -9999px;
+  }
+#preload-03 {
+ background: url(192.168.43.247:8080/yanshi/test/pic/instance3.jpg) no-repeat -9999px -9999px;
+  }

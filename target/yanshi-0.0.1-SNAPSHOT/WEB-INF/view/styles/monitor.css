@@ -1,0 +1,20 @@
+.top-left{
+	float: left;
+	margin:  10px;
+	text-align: center;
+}
+.top-right{
+	float: right;
+	text-align: center;
+	margin:  10px;
+}
+.bottom-left{
+	float: left;
+	margin: 10px ;
+	text-align: center;
+}
+.bottom-right{
+	float: right;
+	margin: 0 10px;
+	text-align: center;
+}
