@@ -1,6 +1,11 @@
 $(document).ready(function() {  
+
+    var arr1 = $("#preValue1").html().split(',');
+    var arr2 = $("#preValue2").html().split(',');
+    var arr3 = $("#preValue3").html().split(',');
+
     var chart1  = {
-    type: 'spline',
+    type: 'areaspline',
     animation: Highcharts.svg, // don't animate in IE < IE 10.
     marginRight: 10,
     events: {
@@ -12,7 +17,7 @@ $(document).ready(function() {
                $.ajax({ 
                   type: "GET", 
                   async: false, 
-                  url: "/yanshi/test/appData1",
+                  url: "/yanshi/view/appData1",
                   success: function(data) { y = data}
                }); 
                series.addPoint([x, y], true, true);
@@ -79,7 +84,8 @@ $(document).ready(function() {
          for (i = -19; i <= 0; i += 1) {
             data.push({
                x: time + i * 1000,
-               y: parseInt(10*Math.random())
+              // y: parseInt(10*Math.random())
+              y: Number(arr1[i+19])
             });
          }
          return data;
@@ -89,7 +95,7 @@ $(document).ready(function() {
      //   $.ajax({ 
      //              type: "GET", 
      //              async: false, 
-     //              url: "/yanshi/test/appData1",
+     //              url: "/yanshi/view/appData1",
      //              success: function(data) { y = data}
      //           }); 
      // })
@@ -108,7 +114,7 @@ $(document).ready(function() {
    json1.credits= {enabled: false};
   
 var chart2  = {
-    type: 'spline',
+    type: 'areaspline',
     animation: Highcharts.svg, // don't animate in IE < IE 10.
     marginRight: 10,
     events: {
@@ -120,7 +126,7 @@ var chart2  = {
                 $.ajax({ 
                   type: "GET", 
                   async: false, 
-                  url: "/yanshi/test/appData2",
+                  url: "/yanshi/view/appData2",
                   success: function(data) { y = data}
                }); 
                series.addPoint([x, y], true, true);
@@ -154,7 +160,8 @@ var chart2  = {
          for (i = -19; i <= 0; i += 1) {
             data.push({
                x: time + i * 1000,
-               y: parseInt(10*Math.random())
+              // y: parseInt(10*Math.random())
+               y: Number(arr2[i+19])
             });
          }
          return data;
@@ -175,7 +182,7 @@ var chart2  = {
    
 
 var chart3  = {
-    type: 'spline',
+    type: 'areaspline',
     plotBackgroundImage:'../images/chart_bg1.jpg',
     animation: Highcharts.svg, // don't animate in IE < IE 10.
     marginRight: 10,
@@ -188,7 +195,7 @@ var chart3  = {
                $.ajax({ 
                   type: "GET", 
                   async: false, 
-                  url: "/yanshi/test/appData3",
+                  url: "/yanshi/view/appData3",
                   success: function(data) { y = data}
                }); 
                series.addPoint([x, y], true, true);
@@ -222,7 +229,8 @@ var chart3  = {
          for (i = -19; i <= 0; i += 1) {
             data.push({
                x: time + i * 1000,
-               y: Math.random()
+              // y: Math.random()
+               y: Number(arr3[i+19])
             });
          }
          return data;
@@ -247,5 +255,20 @@ var chart3  = {
    $('#container1').highcharts(json1);
    $('#container2').highcharts(json2);
    $('#container3').highcharts(json3);
+   
+   var page = 1;
+   var  timeID = setInterval(function(){
+    	$.ajax({ 
+    		type: "GET", 
+    		async: false, 
+        	url: "/yanshi/view/which",
+        	success: function(data) { 
+        		page = data;
+        		if(page === 2){
+        			windows.open("");
+        		}
+        	}
+    	})
+   },1000)
   
 });

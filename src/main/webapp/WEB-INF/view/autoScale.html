@@ -5,42 +5,53 @@
 	<title>实例扩缩</title>
 	<link rel="stylesheet" media="screen" href="styles/scale.css"/>
 </head>
-<body class="instance">
-	<div class="clock">
-			<input type="button" value="应用监控" onclick="javascrtpt:
+<body>	
+	<div class="first">
+		<input type="button" value="应用监控" onclick="javascrtpt:
 		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/test/1'
+		window.location.href='http://'+ip_addr+':8080/yanshi/view/1'
 		">
 		<input type="button" value="全链路" onclick="javascrtpt:
 		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/test/2'
+		window.location.href='http://'+ip_addr+':8080/yanshi/view/2'
 		">
 		<input type="button" value="应用管理" onclick="javascrtpt:
 		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/test/3'
+		window.location.href='http://'+ip_addr+':8080/yanshi/view/3'
 		">
-		<input type="button" value="reset" onclick="javascrtpt:$.ajax({ 
+			<input type="button" value="up" onclick="javascrtpt:$.ajax({ 
                   type: 'GET', 
-                  url: '/yanshi/test/reset',
+                  url: '/yanshi/view/up',
                });">
-		<div id="time">
+		<input type="button" value="expand" onclick="javascrtpt:$.ajax({ 
+                  type: 'GET', 
+                  url: '/yanshi/view/expand',
+               });">
+		<input type="button" value="down" onclick="javascrtpt:$.ajax({ 
+                  type: 'GET', 
+                  url: '/yanshi/view/down',
+               });">	
+		<span id="time"></span>
+	</div>
+	
+		<div class="second">
+			
 		</div>
-		<img src = img1.src>
-	</div>	
+		<div class="third">
+			
+		</div>
+		<div class="fourth">
+
+		</div>
+		<div class="fifth">
+		
+		</div>
+		<div class="sixth">
+		
+		</div>
+
 	<script type="text/javascript" src="scale/jquery-3.0.0.js"></script> 
 	<script type="text/javascript" src="scale/index.js"></script>
-	<script type="text/javascript">
-		 if (document.images) {
-         var img1 = new Image();
-         var img2 = new Image();
-         var img3 = new Image();
-         img1.src = "192.168.43.247:8080/yanshi/test/images/instance1.jpg";
-         img2.src = "192.168.43.247:8080/yanshi/test/images/instance2.jpg";
-         img3.src = "../images/instance3.jpg";
-        // alert(img1.src.slice(3));
-     }
-
-	</script>
 	
 </body>
 </html>

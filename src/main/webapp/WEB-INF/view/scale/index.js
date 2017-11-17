@@ -1,6 +1,4 @@
 $(document).ready(function() {  
-	
-
 	var myDate = new Date();
  	var year = myDate.getFullYear();
  	var month = myDate.getMonth();
@@ -20,14 +18,37 @@ $(document).ready(function() {
 	 	var second = ("0" + myDate1.getSeconds()).slice(-2);	 	
 	 	var str2 = hour + ":" + minute + ":" + second;
 	 	$("#time").html(str1 + ' ' + str2);
- 	},1000);
-	  
+ 	},1000);    
+
 	
- 	setTimeout(function(){
-	var elem = document.getElementsByClassName("instance");
-	//elem[0].style.background = "url(img3.src.slice(3)) fixed center center no-repeat";
-   // elem[0].style.backgroundSize = "100% 100%";
-   elem[0].className = "abc"
-	
-	},5000)
- })
+   var flag = false;
+   var  timeID = setInterval(function(){
+    	$.ajax({ 
+    		type: "GET", 
+    		async: false, 
+        	url: "/yanshi/view/scale",
+        	success: function(data) { 
+        		flag = data;
+        		if(flag){
+        			 clearInterval(timeID);
+	            	var elem = document.getElementsByClassName("third");
+	        	    elem[0].style.zIndex = "11";
+	        	    setTimeout(function(){
+	        		    var elem = document.getElementsByClassName("fourth");
+	        		    elem[0].style.zIndex = "12";
+	        		    setTimeout(function(){
+	        		    	var elem = document.getElementsByClassName("fifth");
+	        		    	elem[0].style.zIndex = "13";
+	        		    	setTimeout(function(){
+	        		    		var elem = document.getElementsByClassName("sixth");
+	        		    		elem[0].style.zIndex = "14";
+	        		    	},3000)
+	        		    },3000)
+	        	    },3000)
+        		}
+        	}
+    	})
+    },2000);
+  	
+})
+

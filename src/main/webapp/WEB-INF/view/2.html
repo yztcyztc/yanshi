@@ -3,10 +3,18 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>测试</title>
+
 </head>
-sb
-<body>${user}<br>
-${nima.name}<br>
-${sb[0]}
+<body>
+	<div>
+		<span id="value1">
+			${sb}
+		</span>
+	</div>
+	
+<script type="text/javascript">
+	var str = document.getElementById("value1").innerHTML;
+	
+</script>
 </body>
 </html>

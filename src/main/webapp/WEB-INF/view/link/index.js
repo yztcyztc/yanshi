@@ -19,7 +19,5 @@ $(document).ready(function() {
 	 	var str2 = hour + ":" + minute + ":" + second;
 	 	$("#time").html(str2);
  	},1000);	
-
-	
 })
 	
