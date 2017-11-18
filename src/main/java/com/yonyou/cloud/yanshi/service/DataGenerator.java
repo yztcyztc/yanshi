@@ -1,15 +1,16 @@
 package com.yonyou.cloud.yanshi.service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.Random;
 
-import org.apache.commons.httpclient.HttpConnection;
-import org.slf4j.LoggerFactory;
+import net.sf.json.JSONObject;
+
 import org.springframework.scheduling.annotation.EnableScheduling;
-import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.scheduling.annotation.Schedules;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,7 +19,7 @@ public class DataGenerator {
 	
 	private Random rand = new Random();
 	
-	final private float[] base = {0.1f,1.5f,3,4,5,7,8,9};
+	final private float[] base = {0.05f,1.5f,3,4,5,7,8,9};
 //	final private int[][] basedata1 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//访问量0~50
 //									   {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9}};//900-1000
 //	final private float[][] basedata2 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//响应时间0~50ms
@@ -26,7 +27,7 @@ public class DataGenerator {
 //	final private float[][] basedata3 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//流量0~50
 //										 {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9}};//900-1000
 
-	private int count = 0,level=0;
+	private int count = 0,level=0,speed = 6;
 	
 	public int data1 = 0;
 	public float data2 = 0;
@@ -45,30 +46,32 @@ public class DataGenerator {
 	}
 	//@Scheduled(cron = "0/1 * * * * ?")
 	public void generate(){		
-	   float d = base[level]*100;
-	   //int a = 50;
-        if(state==UP && count++ >= (rand.nextInt(2)+1)){
-        	if(level<base.length-1){
-        		level ++;
-        		if(level>=7){
-        			System.out.println("alert!");
-        			//alert();
-        		}
+	   float d = base[level]*500;
+	   int a = 500;
+        if(state==UP){
+        	if(count++ >= speed){
+	        	a = 250;
+	        	count = 0;	        	
+	        	if(level<base.length-1){
+	        		level ++;
+	        		if(level>=7){
+	        			System.out.println("alert!");
+	        			//alert();
+	        		}
+	        	}      		
         	}
-        		
-        	count = 0;
-        	putData(d,100);
+        	putData(d,a);
         }
-        else if(state == DOWN && count++>=5){
+        else if(state == DOWN && count++>=speed){
         	if(level>0) level--;
         	count = 0;
-        	putData(d,100);
+        	putData(d,a);
         }
         else if(state == EXPAND){
-        	putData(d,50);
-        	data2 = rand.nextFloat()*50;
+        	putData(d,a);
+        	data2 = rand.nextFloat()*250;
         }
-        else putData(d,50);
+        else putData(d,230);
         	
 //System.out.println(state +":" +data2);
 	        
@@ -87,22 +90,84 @@ public class DataGenerator {
 	public void expand(){
 		state = EXPAND;
 	}
+	
 	public int alert(){	
 		int code = -1;
+		JSONObject json = new JSONObject();
+		json.element("from","molipubaccount");
+		json.element("content",new JSONObject().element("content", "报警报警"));
+		json.element("extend", "hulianwangyanshi");
+		JSONObject j= new JSONObject();
 		try {
-			URL url = new URL("");
-			HttpURLConnection con = (HttpURLConnection) url.openConnection();
-			con.setRequestMethod("GET");
+			URL url = new URL("https://im.yonyou.com/sysadmin/rest/pubaccount/remote/sendmessage/"
+					+ "vague?token="+getToken());
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();			
+			con.setRequestMethod("POST");
 			con.setDoOutput(true);
+			con.setDoInput(true);
+			con.addRequestProperty("Content-Type", "application/json");
 			con.connect();
+			OutputStreamWriter osw = new OutputStreamWriter(con.getOutputStream());
+			osw.write(json.toString());
+			osw.flush();
+			osw.close();
+			InputStream ins = con.getInputStream();
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			int len = 0;
+			while ((len = ins.read(buffer)) != -1) {
+				baos.write(buffer, 0, len);
+			}
+			j= JSONObject.fromObject(baos.toString());
+			
 			code = con.getResponseCode();
-			System.out.println("response code:"+code);			
+			System.out.println("alert code:"+code);
+			con.disconnect();			
+			//return code;
+		} catch (IOException e) {			
+			// TODO 自动生成的 catch 块
+			System.out.println("result: "+j.toString());
+			e.printStackTrace();
+		}
+		return code;
+	}
+	
+	public String getToken(){
+		String token = null;
+		JSONObject json = new JSONObject();
+		json.element("clientId","06fa63f9eac2de8329dfe146db143f22");
+		json.element("clientSecret","874418578B81D56B8D78F4BC7248AE22");
+		try {
+			URL url = new URL("https://im.yonyou.com/sysadmin/rest/moli/moli_pre/token");
+			HttpURLConnection con = (HttpURLConnection) url.openConnection();			
+			con.setRequestMethod("POST");
+			con.setDoOutput(true);
+			con.setDoInput(true);
+			con.addRequestProperty("Content-Type", "application/json");
+			con.connect();
+			OutputStreamWriter osw = new OutputStreamWriter(con.getOutputStream());
+			osw.write(json.toString());
+			osw.flush();
+			osw.close();
+			InputStream ins = con.getInputStream();
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			byte[] buffer = new byte[1024];
+			int len = 0;
+			while ((len = ins.read(buffer)) != -1) {
+				baos.write(buffer, 0, len);
+			}
+			JSONObject j= JSONObject.fromObject(baos.toString());
+			int code = con.getResponseCode();
+			System.out.println("token code:"+code);
+			con.disconnect();
+			token = j.get("token").toString();
+			System.out.println("token: "+token);
 			//return code;
 		} catch (IOException e) {
 			// TODO 自动生成的 catch 块
 			e.printStackTrace();
 		}
-		return code;
+		return token;
 	}
 	/**
 	 * 生成指定范围内的整型一维数组

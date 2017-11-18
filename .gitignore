@@ -2,6 +2,6 @@
 /.settings/
 /.classpath
 /.project
-/target/
+/src/main/webapp/WEB-INF/view.zip
 /.idea/
 /app-publish.iml

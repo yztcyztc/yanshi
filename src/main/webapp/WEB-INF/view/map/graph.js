@@ -4,6 +4,63 @@ $(document).ready(function() {
     var arr2 = $("#preValue2").html().split(',');
     var arr3 = $("#preValue3").html().split(',');
 
+//    var arr = [];
+//    var chart1={},chart2={},chart3={};   
+    
+//    setInterval(function(){
+//    	$.ajax({ 
+//            type: "GET", 
+//            async: false, 
+//            url: "/yanshi/view/appData",
+//            success: function(data) { arr = data}
+//    	});
+//    	
+//    	var x1 = (new Date()).getTime();// current time
+//    	
+//    	chart1  = {
+//    			    type: 'areaspline',
+//    			    animation: Highcharts.svg, // don't animate in IE < IE 10.
+//    			    marginRight: 10,
+//    			    events: {
+//    			         load: function () {
+//    			               var series = this.series[0];
+//    			               var x = x1;
+//    			               var y = arr[0];    			       
+//    			               series.addPoint([x, y], true, true);
+//    			           
+//    			         }
+//    			      }
+//    			   };
+//    	 chart2  = {
+// 			    type: 'areaspline',
+// 			    animation: Highcharts.svg, // don't animate in IE < IE 10.
+// 			    marginRight: 10,
+// 			    events: {
+// 			         load: function () {
+// 			            var series = this.series[0];
+// 			           var x = x1;
+// 			               var y = arr[1];    			       
+// 			               series.addPoint([x, y], true, true);
+// 			           
+// 			         }
+// 			      }
+// 			   };
+//    	 chart3  = {
+// 			    type: 'areaspline',
+// 			    animation: Highcharts.svg, // don't animate in IE < IE 10.
+// 			    marginRight: 10,
+// 			    events: {
+// 			         load: function () {
+// 			            var series = this.series[0];
+// 			           var x = x1;
+// 			               var y = arr[2];    			       
+// 			               series.addPoint([x, y], true, true);
+// 			            
+// 			         }
+// 			      }
+// 			   };   	            	    	 	
+//    },1000)
+//     
     var chart1  = {
     type: 'areaspline',
     animation: Highcharts.svg, // don't animate in IE < IE 10.
@@ -17,8 +74,8 @@ $(document).ready(function() {
                $.ajax({ 
                   type: "GET", 
                   async: false, 
-                  url: "/yanshi/view/appData1",
-                  success: function(data) { y = data}
+                  url: "/yanshi/view/appData",
+                  success: function(data) { y = data[0]}
                }); 
                series.addPoint([x, y], true, true);
             }, 1000);
@@ -127,8 +184,8 @@ var chart2  = {
                 $.ajax({ 
                   type: "GET", 
                   async: false, 
-                  url: "/yanshi/view/appData2",
-                  success: function(data) { y = data}
+                  url: "/yanshi/view/appData",
+                  success: function(data) { y = data[1]}
                }); 
                series.addPoint([x, y], true, true);
             }, 1000);
@@ -209,8 +266,8 @@ var chart3  = {
                $.ajax({ 
                   type: "GET", 
                   async: false, 
-                  url: "/yanshi/view/appData3",
-                  success: function(data) { y = data}
+                  url: "/yanshi/view/appData",
+                  success: function(data) { y = data[2]}
                }); 
                series.addPoint([x, y], true, true);
             }, 1000);

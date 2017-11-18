@@ -1,7 +1,5 @@
 package com.yonyou.cloud.yanshi.controller;
 
-import java.nio.channels.DatagramChannel;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,16 +17,17 @@ import com.yonyou.cloud.yanshi.service.DataGenerator;
 public class ViewController {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
-	int page = 1;
+	int page = 2;
 	
 	
 	@Autowired
 	DataGenerator data;
 	
+	@ResponseBody
 	@RequestMapping("/a")
 	public String test(){
-		String sb = "showMessage";
-		return sb;
+		int token = data.alert();
+		return "ss";
 	}
 	
 	//@ResponseBody
@@ -41,10 +40,10 @@ public class ViewController {
 	@ApiOperation(value = "访问应用监控页面", notes = "携带生成的图表初始值")
 	@RequestMapping("/1")
 	public String page1(Model model){	
-		int level = (int)data.getLevel()*100;
-		int a = 100;
+		int level = (int)data.getLevel()*500;
+		int a = 500;
 		if(data.getState() == DataGenerator.STABLE){
-			a = 50;
+			a = 250;
 		}
 			//System.out.println("level:"+level);
 		model.addAttribute("pre1", data.getInteger1(level,level+a));
@@ -74,7 +73,7 @@ public class ViewController {
 	@ApiOperation(value = "查询当前页面号", notes = "")
 	@RequestMapping("/which")
 	@ResponseBody public Object which(){	
-		System.out.println("page:"+this.page);
+	//System.out.println("page:"+this.page);
 		return page;
 	}
 	
@@ -85,11 +84,11 @@ public class ViewController {
 
 		if(data.getState() == DataGenerator.EXPAND)
 			kuosuo = true;
-		System.out.println("scale:"+kuosuo);
+		//System.out.println("scale:"+kuosuo);
 		return kuosuo;
 	}
 	
-	@ApiOperation(value = "查询当前页面号", notes = "")
+	@ApiOperation(value = "切换页面", notes = "1：应用监控。2：全链路监控。3：应用管理。")
 	@RequestMapping("/change")
 	@ResponseBody public Object change(@RequestParam("page")int page){
 		
@@ -100,6 +99,7 @@ public class ViewController {
 	@ApiOperation(value = "重置数据基数", notes = "")
 	@RequestMapping("/reset")
 	@ResponseBody public Object datareset(){
+		page = 2;
 		data.reset();
 		return "ok";
 	}
@@ -118,36 +118,44 @@ public class ViewController {
 		return "ok";
 	}
 	
-	@ApiOperation(value = "模拟负载下降", notes = "")
-	@RequestMapping("/down")
-	@ResponseBody public Object down(){
-		data.down();
-		return "ok";
-	}
+//	@ApiOperation(value = "模拟负载下降", notes = "")
+//	@RequestMapping("/down")
+//	@ResponseBody public Object down(){
+//		data.down();
+//		return "ok";
+//	}
 	
 	@ApiOperation(value = "用户访问量", notes = "返回用户访问量数据")
-	@RequestMapping("/appData1")
-	@ResponseBody public  Object appData1(){
+	@RequestMapping("/appData")
+	@ResponseBody public  Object appData(){
         data.generate();
-        int d = data.getData1();
-      //  System.out.println("i"+d);
-		return d;
-	}
-
-	@ApiOperation(value = "响应时间", notes = "返回响应时间数据")
-	@RequestMapping("/appData2")
-	@ResponseBody public  Object appData2(){
-
-		float d = data.getData2();
-       // System.out.println("j"+j);
+        float[] d = {data.getData1(),data.getData2(),data.getData3()};     
 		return d;
 	}
 	
-	@ApiOperation(value = "网站流量", notes = "返回网站流量数据")
-	@RequestMapping("/appData3")
-	@ResponseBody public  Object appData3(){
-		float d = data.getData3();
-      //  System.out.println("k"+k);
-		return d;
-	}
+//	@ApiOperation(value = "用户访问量", notes = "返回用户访问量数据")
+//	@RequestMapping("/appData1")
+//	@ResponseBody public  Object appData1(){
+//        data.generate();
+//        int d = data.getData1();
+//      //  System.out.println("i"+d);
+//		return d;
+//	}
+//
+//	@ApiOperation(value = "响应时间", notes = "返回响应时间数据")
+//	@RequestMapping("/appData2")
+//	@ResponseBody public  Object appData2(){
+//
+//		float d = data.getData2();
+//       // System.out.println("j"+j);
+//		return d;
+//	}
+//	
+//	@ApiOperation(value = "网站流量", notes = "返回网站流量数据")
+//	@RequestMapping("/appData3")
+//	@ResponseBody public  Object appData3(){
+//		float d = data.getData3();
+//      //  System.out.println("k"+k);
+//		return d;
+//	}
 }
