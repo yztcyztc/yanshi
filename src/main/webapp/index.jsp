@@ -10,8 +10,8 @@
 		<title>Welcome</title>
 	</head> 
 	<body>
-		mlgb
+		点击进入全链路监控
 		
-		<a href="test/abc">ABCd</a>
+		<a href="view/2">全链路监控</a>
 	</body>
 </html>

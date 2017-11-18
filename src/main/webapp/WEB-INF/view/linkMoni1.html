@@ -5,29 +5,18 @@
 	<title>全链路监控</title>
 	<link rel="stylesheet" media="screen" href="styles/linkmoni.css"/>
 </head>
-<body class="alarm1">
-		<input type="button" value="应用监控" onclick="javascrtpt:
-		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/view/1'
-		">
-		<input type="button" value="全链路" onclick="javascrtpt:
-		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/view/2'
-		">
-		<input type="button" value="应用管理" onclick="javascrtpt:
-		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/view/3'
-		">
-		<input type="button" value="reset" onclick="javascrtpt:$.ajax({ 
-                  type: 'GET', 
-                  url: '/yanshi/view/reset',
-               });">
-	<div id = "date" class="date">
+<body >
+	<div class="first">
 		
+		<div id = "date" class="date">
+		</div>
+		<div id="time" class="time">
+		</div>
 	</div>
-	<div id="time" class="time">
-		
-	</div>
+	<div class="second"></div>
+	
+	<div class="forth"></div>
+
 	<script type="text/javascript" src="link/jquery-3.0.0.js"></script> 
 	<script type="text/javascript" src="link/index.js">	</script>
 </body>

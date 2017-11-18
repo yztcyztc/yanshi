@@ -30,22 +30,31 @@ $(document).ready(function() {
    };   
    var xAxis = {
       type: 'datetime',
-      tickPixelInterval: 150
+      tickPixelInterval: 150,
+      labels: {
+    	rotation: -30,
+        y: 20, //x轴刻度往下移动20px
+        style: {
+          color: '#000',//颜色
+          fontSize:'15px'  //字体
+        }
+      },
+     
    };
    var yAxis1 = {
       title: {
-         text: ''
+         text: '',
       },
-     labels: {
-         formatter: function () {
+     labels: {     
+        y: 20, //x轴刻度往下移动20px
+        style: {
+          color: '#000',//颜色
+          fontSize:'18px'  //字体
+        },
+      formatter: function () {
             return this.value + ' 次';
          }
       },
-      plotLines: [{
-         value: 0,
-         width: 1,
-         color: '#808080'
-      }]
    };
    var tooltip = {
       formatter: function () {
@@ -76,7 +85,7 @@ $(document).ready(function() {
       enabled: false
    };
    var series1= [{
-      name: 'Random data',
+      name: '',
       marker:{enabled: false,},
       data: (function () {
          // generate an array of random data
@@ -90,15 +99,7 @@ $(document).ready(function() {
          }
          return data;
       }())    
-     // data: (function(){
-     //  var data = [],time = (new Date()).getTime(),i;
-     //   $.ajax({ 
-     //              type: "GET", 
-     //              async: false, 
-     //              url: "/yanshi/view/appData1",
-     //              success: function(data) { y = data}
-     //           }); 
-     // })
+   
    }];     
       
    var json1 = {}, json2 = {}, json3= {};   
@@ -140,19 +141,25 @@ var chart2  = {
          text: ''
       },
      labels: {
+        y: 20, //x轴刻度往下移动20px
+        style: {
+          color: '#000',//颜色
+          fontSize:'18px'  //字体
+        },
          formatter: function () {
             return this.value + ' ms';
          }
       },
       plotLines: [{
-         value: 0,
-         width: 1,
-         color: '#808080'
-      }]
+          value: 700,
+          width: 2,
+          color: 'red',
+          dashStyle :'Dot'
+       }]
    };
  
    var series2= [{
-      name: 'Random data',
+      name: '',
       marker:{enabled: false,},
       data: (function () {
          // generate an array of random data
@@ -165,8 +172,15 @@ var chart2  = {
             });
          }
          return data;
-      }())    
-   }];     
+      }()),
+       zones: [{
+          value: 700,
+          color: 'rgba(124, 181, 236, 0.75)',
+         }, {
+          value:10000,
+          color: 'red'
+         }]    
+   }];               
       
    json2.chart = chart2; 
    json2.title = title;     
@@ -209,6 +223,12 @@ var chart3  = {
          text: ''
       },
      labels: {
+    	
+        y: 20, //x轴刻度往下移动20px
+        style: {
+          color: '#000',//颜色
+          fontSize:'18px'  //字体
+        },
          formatter: function () {
             return this.value + ' KB';
          }
@@ -221,7 +241,7 @@ var chart3  = {
    };
  
    var series3= [{
-      name: 'Random data',
+      name: '',
       marker:{enabled: false,},
       data: (function () {
          // generate an array of random data
@@ -255,20 +275,22 @@ var chart3  = {
    $('#container1').highcharts(json1);
    $('#container2').highcharts(json2);
    $('#container3').highcharts(json3);
-   
-   var page = 1;
-   var  timeID = setInterval(function(){
-    	$.ajax({ 
-    		type: "GET", 
-    		async: false, 
-        	url: "/yanshi/view/which",
-        	success: function(data) { 
-        		page = data;
-        		if(page === 2){
-        			windows.open("");
-        		}
-        	}
-    	})
+
+   setInterval(function(){
+	   $.ajax({ 
+	          type: "GET", 
+	          async: false, 
+	          url: "/yanshi/view/which",
+	          success: function(data) {
+	           		if(data === 1) {
+	           			return
+	           		}else if(data === 2){
+	           			window.location.href="/yanshi/view/2";
+	           		}else if(data === 3){
+	           			window.location.href="/yanshi/view/3";
+	           		}
+	           	},
+	       }) 
    },1000)
   
 });

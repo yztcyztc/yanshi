@@ -1,5 +1,7 @@
 package com.yonyou.cloud.yanshi.controller;
 
+import java.nio.channels.DatagramChannel;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +17,7 @@ import com.yonyou.cloud.yanshi.service.DataGenerator;
 @Controller
 @RequestMapping("/view")
 public class ViewController {
-	
+
 	Logger logger = LoggerFactory.getLogger(getClass());
 	int page = 1;
 	
@@ -30,15 +32,10 @@ public class ViewController {
 	}
 	
 	//@ResponseBody
-	@RequestMapping("/qqq")
-	public  Object test1(Model model){
-		//String ss = "masdkhfk";
-		int[] sb = {5,4,3};
-		String sbb = sb.toString();
-		System.out.println(sbb);
-		model.addAttribute("user", "use1r");
-		model.addAttribute("sb", data.getInteger1(50, 100));
-		return "2";
+	@RequestMapping("/test")
+	public  Object test1(){
+
+		return "test";
 	}
 	
 	@ApiOperation(value = "访问应用监控页面", notes = "携带生成的图表初始值")
@@ -49,21 +46,21 @@ public class ViewController {
 		if(data.getState() == DataGenerator.STABLE){
 			a = 50;
 		}
-			System.out.println("level:"+level);
+			//System.out.println("level:"+level);
 		model.addAttribute("pre1", data.getInteger1(level,level+a));
 		model.addAttribute("pre2", data.getFloat1(level,level+a));
 		model.addAttribute("pre3", data.getFloat1(level,level+a));
-		logger.info("open appMoni");
+		logger.info("open appMoni | "+"level:"+level);
 		return "appMoni";
 	}
 	
 	@ApiOperation(value = "访问全链路监控页面", notes = "")
 	@RequestMapping("/2")
 	public String page2(){
-		String name = "linkMoni1";
-		if(data.getState() == DataGenerator.EXPAND)
-			name =  "linkMoni2";		
-		logger.info("open linkMoni");		
+		String name = "linkMoni2";
+		if(data.getState() == DataGenerator.UP)
+			name =  "linkMoni1";		
+		logger.info("open "+name);		
 		return name;
 	}
 	
@@ -76,7 +73,8 @@ public class ViewController {
 	
 	@ApiOperation(value = "查询当前页面号", notes = "")
 	@RequestMapping("/which")
-	@ResponseBody public Object which(){		
+	@ResponseBody public Object which(){	
+		System.out.println("page:"+this.page);
 		return page;
 	}
 	
@@ -93,7 +91,8 @@ public class ViewController {
 	
 	@ApiOperation(value = "查询当前页面号", notes = "")
 	@RequestMapping("/change")
-	@ResponseBody public Object change(@RequestParam("page")int page){	
+	@ResponseBody public Object change(@RequestParam("page")int page){
+		
 		this.page = page;
 		return page;
 	}

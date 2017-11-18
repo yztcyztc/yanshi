@@ -110,7 +110,7 @@ public class DataGenerator {
 	 * @param max
 	 * @param num
 	 * @return
-	 */
+	 */ 
 	public int[] getInteger(int min, int max, int num) {
 		//Random random = new Random();
 		int[] array = new int[num];

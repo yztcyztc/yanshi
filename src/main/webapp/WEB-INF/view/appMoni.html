@@ -8,49 +8,22 @@
 	<body>
 		<div>
 			<h3 style="text-align:center">应用[演示]监控</h3>
-					<input type="button" value="应用监控" onclick="javascrtpt:
-		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/view/1'
-		">
-		<input type="button" value="全链路" onclick="javascrtpt:
-		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/view/2'
-		">
-		<input type="button" value="应用管理" onclick="javascrtpt:
-		var ip_addr = document.location.hostname;
-		window.location.href='http://'+ip_addr+':8080/yanshi/view/3'
-		">
-		<input type="button" value="reset" onclick="javascrtpt:$.ajax({ 
-                  type: 'GET', 
-                  url: '/yanshi/view/reset',
-               });">
-		<input type="button" value="up" onclick="javascrtpt:$.ajax({ 
-                  type: 'GET', 
-                  url: '/yanshi/view/up',
-               });">
-		<input type="button" value="expand" onclick="javascrtpt:$.ajax({ 
-                  type: 'GET', 
-                  url: '/yanshi/view/expand',
-               });">
-		<input type="button" value="down" onclick="javascrtpt:$.ajax({ 
-                  type: 'GET', 
-                  url: '/yanshi/view/down',
-               });">
-				<div class="top-left  background">
+               
+               <div class="top-left background">
+					<div id="container2"></div>
+					<div>响应时间（RT）曲线</div>
+				</div>
+				
+				<div class="top-right  background">
 					<div id="map" ></div>
 					<div>全国地区访问量</div>
 				</div>
-				<div class="top-right background">
+				
+				<div class="bottom-left background">
 					<div id="container1" ></div>
 					<div>用户访问量（UV）曲线</div>
 				</div>
 				
-			
-				<div class="bottom-left background">
-					<div id="container2"></div>
-					<div>响应时间（RT）曲线</div>
-				</div>
-			
 				<div class="bottom-right background">
 					<div id="container3" ></div>
 					<div>网站流量曲线</div>

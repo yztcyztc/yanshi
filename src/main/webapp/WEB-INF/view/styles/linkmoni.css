@@ -1,5 +1,5 @@
 
-.alarm1{
+/*.alarm1{
 	 background: url("../images/link1.jpg")  fixed center center no-repeat;
 	 background-size: 100% 100%;
      width:100%;
@@ -8,18 +8,58 @@
 	 background: url("../images/link2.jpg")  fixed center center no-repeat;
 	 background-size: 100% 100%;
      width:100%;
-}
+}*/
 #date{
 	position: absolute;	
 	right:100px;
-	top:100px;
+	top:10px;
 	font-weight: bold;
-	color:#00F0FF
+	color:#00F0FF;
+	font-size: small;
 }
 #time{
 	position: absolute;	
-	right:125px;
-	top:120px;
+	right:70px;
+	top:50px;
 	font-weight: bold;
-	color:#00F0FF
+	color:#00F0FF;
+	font-size:xx-large;
+}
+
+.first{	
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	z-index: 20;
+}
+
+.second{	
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	z-index: 10;
+	background:url("../images/link1.gif") fixed center center no-repeat;
+	background-size: 100% ;    
+}
+
+.third{	
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	z-index: 10;
+	background:url("../images/link2.gif") fixed center center no-repeat;
+	background-size: 100%;    
+}
+
+.forth{	
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position:absolute;
+	z-index: 15;
+	background:url("../images/circle.gif") fixed center center no-repeat;
+	background-size: 100%;    
 }

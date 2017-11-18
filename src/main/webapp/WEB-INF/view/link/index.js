@@ -3,7 +3,7 @@ $(document).ready(function() {
  	var year = myDate.getFullYear();
  	var month = myDate.getMonth();
  	var date = myDate.getDate();
- 	var str1 = year + "年" + ("0" + (month + 1)).slice(-2) + "月" + date + "日";
+ 	var str1 = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + date;
 
  	var hour = ("0" + myDate.getHours()).slice(-2);
 	var minute = ("0" + myDate.getMinutes()).slice(-2);
@@ -19,5 +19,24 @@ $(document).ready(function() {
 	 	var str2 = hour + ":" + minute + ":" + second;
 	 	$("#time").html(str2);
  	},1000);	
+
+
+//轮训跳转页面
+setInterval(function(){
+   	 $.ajax({ 
+          type: "GET", 
+          async: false, 
+          url: "/yanshi/view/which",
+          success: function(data) {
+           		if(data === 2) {
+           			return
+           		}else if(data === 1){
+           			window.location.href="/yanshi/view/1";
+           		}else if(data === 3){
+           			window.location.href="/yanshi/view/3"
+           		}
+           	}
+       }); 
+   },1000)
 })
 	
