@@ -11,6 +11,7 @@ import java.util.Random;
 import net.sf.json.JSONObject;
 
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -27,7 +28,7 @@ public class DataGenerator {
 //	final private float[][] basedata3 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//流量0~50
 //										 {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9}};//900-1000
 
-	private int count = 0,level=0,speed = 6;
+	private int count = 0,level=0,speed = 1;
 	
 	public int data1 = 0;
 	public float data2 = 0;
@@ -35,7 +36,7 @@ public class DataGenerator {
 	
 	public static int STABLE = 1;
 	public static int UP = 2;
-	public static int DOWN = 3;
+
 	public static int EXPAND = 4;
 	public int state = STABLE;
 	
@@ -44,17 +45,18 @@ public class DataGenerator {
 		data3 = d + rand.nextFloat()*a;
 		data2 = d + rand.nextFloat()*a;
 	}
-	//@Scheduled(cron = "0/1 * * * * ?")
+	@Scheduled(cron = "0/1 * * * * ?")
 	public void generate(){		
 	   float d = base[level]*500;
 	   int a = 500;
         if(state==UP){
         	if(count++ >= speed){
-	        	a = 250;
+        		a = 500;
+	        	d += 150;
 	        	count = 0;	        	
 	        	if(level<base.length-1){
 	        		level ++;
-	        		if(level>=7){
+	        		if(level==5){
 	        			System.out.println("alert!");
 	        			//alert();
 	        		}
@@ -62,12 +64,8 @@ public class DataGenerator {
         	}
         	putData(d,a);
         }
-        else if(state == DOWN && count++>=speed){
-        	if(level>0) level--;
-        	count = 0;
-        	putData(d,a);
-        }
         else if(state == EXPAND){
+        	a= 500;
         	putData(d,a);
         	data2 = rand.nextFloat()*250;
         }
@@ -84,9 +82,6 @@ public class DataGenerator {
 	public void up(){
 		state = UP;
 	}
-	public void down(){
-		state = DOWN;
-	}
 	public void expand(){
 		state = EXPAND;
 	}
@@ -94,8 +89,8 @@ public class DataGenerator {
 	public int alert(){	
 		int code = -1;
 		JSONObject json = new JSONObject();
-		json.element("from","molipubaccount");
-		json.element("content",new JSONObject().element("content", "报警报警"));
+		json.element("from","molipubaccount.moli_pre.moli");
+		json.element("content","{\"content\": \"嘿，老哥，你的应用负载过高了！建议进入应用管理进行扩容操作。\" }");
 		json.element("extend", "hulianwangyanshi");
 		JSONObject j= new JSONObject();
 		try {

@@ -3,8 +3,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
     
 
-
 <html>
+<meta http-equiv="refresh" content="0;url=view/2">
+</html>
+<!-- <html>
 	<head>
 		<meta charset="utf-8">
 		<title>Welcome</title>
@@ -14,4 +16,5 @@
 		
 		<a href="view/2">全链路监控</a>
 	</body>
-</html>
+	<script t></script>
+</html> -->

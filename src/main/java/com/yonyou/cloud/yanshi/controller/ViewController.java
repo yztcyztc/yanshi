@@ -128,7 +128,7 @@ public class ViewController {
 	@ApiOperation(value = "用户访问量", notes = "返回用户访问量数据")
 	@RequestMapping("/appData")
 	@ResponseBody public  Object appData(){
-        data.generate();
+       // data.generate();
         float[] d = {data.getData1(),data.getData2(),data.getData3()};     
 		return d;
 	}

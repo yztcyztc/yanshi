@@ -4,7 +4,7 @@
     
 	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
 		<encoder>
-			<pattern>%date{HH:mm:ss.SSS} [%X{current_app_id}] [%X{current_provider_id}] [%X{call_thread_id}] [%X{current_tenant_id}] [%X{current_user_name}] [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 			<charset class="java.nio.charset.Charset">UTF-8</charset>
 		</encoder>
 	</appender>
@@ -16,7 +16,7 @@
 			<maxHistory>30</maxHistory>
 		</rollingPolicy>
 		<encoder>
-			<pattern>%date{HH:mm:ss.SSS} [%X{current_app_id}] [%X{current_provider_id}] [%X{call_thread_id}] [%X{current_tenant_id}] [%X{current_user_name}] [%thread] %-5level %logger{36} - %msg%n</pattern>
+			<pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
 			<charset class="java.nio.charset.Charset">UTF-8</charset>
 		</encoder>
 	</appender>

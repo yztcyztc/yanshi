@@ -6,27 +6,27 @@
 		<link rel="stylesheet" media="screen" href="styles/appmoni.css"/>
 	</head>
 	<body>
-		<div>
+		<div id="graph">
 			<h3 style="text-align:center">应用[演示]监控</h3>
                
-               <div class="top-left background">
-					<div id="container2"></div>
-					<div>响应时间（RT）曲线</div>
+               <div class="top-left">
+					<div id="container2" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+				<!-- 	<div>响应时间（RT）曲线</div> -->
 				</div>
 				
-				<div class="top-right  background">
-					<div id="map" ></div>
-					<div>全国地区访问量</div>
+				<div class="top-right" >
+					<div id="map" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+				<!-- 	<div>全国地区访问量</div> -->
 				</div>
 				
-				<div class="bottom-left background">
-					<div id="container1" ></div>
-					<div>用户访问量（UV）曲线</div>
+				<div class="bottom-left ">
+					<div id="container1" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+					<!-- <div>用户访问量（UV）曲线</div> -->
 				</div>
 				
-				<div class="bottom-right background">
-					<div id="container3" ></div>
-					<div>网站流量曲线</div>
+				<div class="bottom-right">
+					<div id="container3" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+					<!-- <div>网站流量曲线</div> -->
 				</div>
 
 				<span id="preValue1" style="visibility:hidden"> ${pre1}</span>
@@ -35,9 +35,8 @@
 		</div>
 		<script type="text/javascript" src="map/jquery-3.0.0.js"></script> 
 		<script type="text/javascript" src="map/highcharts.js"></script>
-		<script type="text/javascript" src="map/raphael.js"></script> 
-		<script type="text/javascript" src="map/chinamapPath.js"></script> 
-		<script type="text/javascript" src="map/china.js"></script> 
 		<script type="text/javascript" src="map/graph.js"></script>
+		<script src="map/echarts.js"></script>
+		
 	</body>
 </html>
