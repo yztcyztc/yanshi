@@ -1,11 +1,36 @@
 $(document).ready(function() {  
 //获取初始数据三组
-    var arr1 = $("#preValue1").html().split(',');
-    var arr2 = $("#preValue2").html().split(',');
-    var arr3 = $("#preValue3").html().split(',');
+  var arr1 = $("#preValue1").html().split(',');
+  var arr2 = $("#preValue2").html().split(',');
+  var arr3 = $("#preValue3").html().split(',');
+
+//时间
+  var myDate = new Date();
+  var year = myDate.getFullYear();
+  var month = myDate.getMonth();
+  var date = myDate.getDate();
+  var str1 = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + date;
+
+  var hour = ("0" + myDate.getHours()).slice(-2);
+  var minute = ("0" + myDate.getMinutes()).slice(-2);
+  var second = ("0" + myDate.getSeconds()).slice(-2);   
+  var str2 = hour + ":" + minute + ":" + second;
+  $("#time").html(str2);    
+  $("#date").html(str1);
+   setInterval(function () {  
+    var myDate1 = new Date();    
+    var hour = ("0" + myDate1.getHours()).slice(-2);
+    var minute = ("0" + myDate1.getMinutes()).slice(-2);
+    var second = ("0" + myDate1.getSeconds()).slice(-2);    
+    var str2 = hour + ":" + minute + ":" + second;
+    $("#time").html(str2);
+  },1000);  
+
 //三个曲线图
     var chart1  = {
     type: 'areaspline',
+    alignTicks:true,
+    backgroundColor: 'rgba(0,30,47,22)',
     animation: Highcharts.svg, // don't animate in IE < IE 10.
     marginRight: 10,
     events: {
@@ -27,7 +52,7 @@ $(document).ready(function() {
    };
    var title1 = {
       text: '用户访问量（UV）曲线'  ,
-      style: {fontWeight:"bold"}
+      style: {fontSize:"18px",color:"#00F0FF"}
    };   
    var xAxis = {
       type: 'datetime',
@@ -35,11 +60,12 @@ $(document).ready(function() {
       labels: {
     	rotation: -30,
         y: 20, //x轴刻度往下移动20px
-        style: {
-          color: '#000',//颜色
-          fontSize:'15px'  //字体
-        }
+        style:{
+            fontSize:'14px',
+            color:'#0085C8'         
+          },
       },
+
      
    };
    var yAxis1 = {
@@ -48,14 +74,21 @@ $(document).ready(function() {
       },
      labels: {     
         y: 20, //x轴刻度往下移动20px
-        style: {
-          color: '#000',//颜色
-          fontSize:'18px'  //字体
-        },
+        style:{
+            fontSize: '14px',
+            color: '#00A9FA'
+          },
       formatter: function () {
             return this.value + ' 次';
          }
       },
+       plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }],
+      gridLineWidth:1,
+      gridLineColor:"#00F7FF",
    };
    var tooltip = {
       formatter: function () {
@@ -99,8 +132,23 @@ $(document).ready(function() {
             });
          }
          return data;
-      }())    
-   
+      }()),
+       zones: [{
+        value:1800,
+        color:'#00F0FF'
+       },{
+        value:2000,
+        color:'#006C79'
+       },{
+        value:2300,
+        color:'#00A1A9'
+       },{
+        value:2600,
+        color:'#00DCD4'
+       },{
+        value:10000,
+        color: '#00F3EC'
+         }]     
    }];     
       
    var json1 = {}, json2 = {}, json3= {};   
@@ -117,6 +165,7 @@ $(document).ready(function() {
   
 var chart2  = {
     type: 'areaspline',
+     backgroundColor: 'rgba(0,30,47,22)',
     animation: Highcharts.svg, // don't animate in IE < IE 10.
     marginRight: 10,
     events: {
@@ -139,22 +188,19 @@ var chart2  = {
 
    var title2 = {
       text: '响应时间(RT）曲线' ,
-       style: {fontWeight:"bold"}  
+       style: {fontSize:"18px",color:"#00F0FF"}  
    }; 
   
    var yAxis2 = {
       title: {
-         text: '',
-         style:{
-            color:"#ff0000"
-          }
+         text: '',    
       },
      labels: {
         y: 20, //x轴刻度往下移动20px
-        style: {
-          color: '#000',//颜色
-          fontSize:'18px'  //字体
-        },
+       style:{
+            fontSize:'14px',
+            color:'#00A9FA'
+          },
          formatter: function () {
             return this.value + ' ms';
          }
@@ -164,7 +210,9 @@ var chart2  = {
           width: 2,
           color: 'red',
           dashStyle :'Dot'
-       }]
+       }],
+      gridLineWidth:1,
+      gridLineColor:"#00A9FA",
    };
  
    var series2= [{
@@ -183,11 +231,29 @@ var chart2  = {
          return data;
       }()),
        zones: [{
-          value: 3000,
-          color: 'rgba(124, 181, 236, 0.75)',
-         }, {
-          value:10000,
-          color: 'red'
+        value:1800,
+        color:'#00F0FF'
+       },{
+        value:2000,
+        color:'#006C79'
+       },{
+        value:2300,
+        color:'#00A1A9'
+       },{
+        value:2600,
+        color:'#00DCD4'
+       },{
+        value:2800,
+        color:'#4CC17B'
+       },{
+        value:2900,
+        color:'#A0AD26'
+       },{
+        value:3200,
+        color:'#C17318'
+       },{
+        value:6000,
+        color: '#F51203'
          }]    
    }];               
       
@@ -204,6 +270,7 @@ var chart2  = {
 
 var chart3  = {
     type: 'areaspline',
+    backgroundColor: 'rgba(0,30,47,22)',
     animation: Highcharts.svg, 
     marginRight: 10,
     events: {
@@ -226,7 +293,7 @@ var chart3  = {
 
      var title3 = {
       text: '网站流量曲线',
-       style: {fontWeight:"bold"}   
+      style: {fontSize:"18px",color:"#00F0FF"} 
    }; 
   
    var yAxis3 = {
@@ -237,8 +304,8 @@ var chart3  = {
     	
         y: 20, //x轴刻度往下移动20px
         style: {
-          color: '#000',//颜色
-          fontSize:'18px'  //字体
+        fontSize: '14px',
+        color: '#00A9FA'
         },
          formatter: function () {
             return this.value + ' KB';
@@ -248,7 +315,9 @@ var chart3  = {
          value: 0,
          width: 1,
          color: '#808080'
-      }]
+      }],
+      gridLineWidth:1,
+      gridLineColor:"#00F7FF",
    };
  
    var series3= [{
@@ -263,7 +332,23 @@ var chart3  = {
             });
          }
          return data;
-      }())    
+      }()),
+       zones: [{
+        value:1800,
+        color:'#00F0FF'
+       },{
+        value:2000,
+        color:'#006C79'
+       },{
+        value:2300,
+        color:'#00A1A9'
+       },{
+        value:2600,
+        color:'#00DCD4'
+       },{
+        value:10000,
+        color: '#00F3EC'
+         }]     
    }];     
    json3.chart = chart3; 
    json3.title = title3;     
@@ -303,31 +388,31 @@ var chart3  = {
                       arr.push({name: '天津',value:Math.floor(0.05*data[2])});
                       arr.push({name: '上海',value:Math.floor(0.1*data[2])});
                       arr.push({name: '重庆',value:0});
-                      arr.push({name: '河北',value:Math.floor(0.3*data[2])});
+                      arr.push({name: '河北',value:Math.floor(0.25*data[2])});
                       arr.push({name: '河南',value:0});
                       arr.push({name: '云南',value:0});
                       arr.push({name: '辽宁',value:0});
                       arr.push({name: '黑龙江',value:Math.floor(0.05*data[2])});
                       arr.push({name: '湖南',value:0});
                       arr.push({name: '安徽',value:0});
-                      arr.push({name: '山东',value:Math.floor(0.05*data[2])});
-                      arr.push({name: '新疆',value:0});
+                      arr.push({name: '山东',value:Math.floor(0.04*data[2])});
+                      arr.push({name: '新疆',value:Math.floor(0.01*data[2])});
                       arr.push({name: '江苏',value:Math.floor(0.05*data[2])});
-                      arr.push({name: '浙江',value:Math.floor(0.2*data[2])});
+                      arr.push({name: '浙江',value:Math.floor(0.14*data[2])});
                       arr.push({name: '江西',value:0});
                       arr.push({name: '湖北',value:0});
                       arr.push({name: '广西',value:0});
                       arr.push({name: '甘肃',value:0});
                       arr.push({name: '山西',value:0});
-                      arr.push({name: '内蒙古',value:0});
+                      arr.push({name: '内蒙古',value:Math.floor(0.01*data[2])});
                       arr.push({name: '陕西',value:Math.floor(0.05*data[2])});
                       arr.push({name: '吉林',value:Math.floor(0.05*data[2])});
                       arr.push({name: '福建',value:0});
                       arr.push({name: '贵州',value:0});
                       arr.push({name: '广东',value:Math.floor(0.05*data[2])});
-                      arr.push({name: '青海',value:0});
+                      arr.push({name: '青海',value:Math.floor(0.05*data[2])});
                       arr.push({name: '西藏',value:0});
-                      arr.push({name: '四川',value:0});
+                      arr.push({name: '四川',value:Math.floor(0.05*data[2])});
                       arr.push({name: '宁夏',value:0});
                       arr.push({name: '海南',value:0});
                       arr.push({name: '台湾',value:0});
@@ -349,7 +434,12 @@ var chart3  = {
                     title : {
                         text: '全国地区访问量',
                         subtext: '',
-                        x:'center'
+                        x:'center',
+                        textStyle:{
+                          color: "#00F0FF",
+                          fontSize:'18',
+                          fontWeight:'22'
+                        }
                     },
                     tooltip : {
                         trigger: 'item'
@@ -371,25 +461,50 @@ var chart3  = {
                     x: 'left',
                     y: 'bottom',
                     splitList: [
-                        {start: 801},
+                        {start: 800},
                         {start: 601, end: 800},
                         {start: 401, end: 600},
-                        {start: 201, end: 400},                      
+                        {start: 201, end: 400},                       
                         {start: 1, end: 200},
                         {start: 0, end: 0}
-                    ],
-                    color: ['#00CCA3','#00EEBE','#11FFCF','#33FFD6','#AAFFEE','#E6E6E6']                   
-                },    
+                    ],                  
+                    color: ['#00FFDB','#00F79E','#00B784','#009665','#007053','rgba(230,66,66,0.08)'],
+                    textStyle:{                     
+                      fontSize: '12',
+                      color: '#00F0FF',
+                    }                 
+                },  
                     series : [
                         {
-                            name: '访问量',
-                            type: 'map',
-                            mapType: 'china',
-                            roam: false,
+                            name: '访问量',                          
+                            type:'map',
+                            mapType:'china',
+                            selectedMode:'single', 
+                            roam: true,
                             itemStyle:{
-                                normal:{label:{show:true}},
-                                emphasis:{label:{show:true}}
+                                normal:{
+                                //  borderColor: '#00F0FF',
+                                  borderColor:'#00F0FF',
+                                  borderWidth: 1,
+                                  boxShadow:'0 0 39px 0 #00FDD6', 
+                                  areaStyle:{color:'rgba(0,30,47,22)',border:'1px solid #000'},
+                                  label:{
+                                    show:true,
+                                    textStyle:{
+                                        color: "#00B9D9",
+                                        fontSize: '8'
+                                      }
+                                  }
+                                },
+                                emphasis:{
+                                  areaStyle:{
+                                    color:'red' 
+                                  },
+                                  label:{show:true},
+                                },
+
                             },
+                        
                             data:arr,
                             // [
                             //     {name: '北京',value: Math.round(Math.random()*1000)},
@@ -404,7 +519,7 @@ var chart3  = {
                             //     {name: '湖南',value: Math.round(Math.random()*1000)},
                             //     {name: '安徽',value: Math.round(Math.random()*1000)},
                             //     {name: '山东',value: Math.round(Math.random()*1000)},
-                            //     {name: '新疆',value: Math.round(Math.random()*1000)},
+                            //     {name: '新疆',value: 0},
                             //     {name: '江苏',value: Math.round(Math.random()*1000)},
                             //     {name: '浙江',value: Math.round(Math.random()*1000)},
                             //     {name: '江西',value: Math.round(Math.random()*1000)},
@@ -423,9 +538,9 @@ var chart3  = {
                             //     {name: '四川',value: Math.round(Math.random()*1000)},
                             //     {name: '宁夏',value: Math.round(Math.random()*1000)},
                             //     {name: '海南',value: Math.round(Math.random()*1000)},
-                            //     {name: '台湾',value: Math.round(Math.random()*1000)},
-                            //     {name: '香港',value: Math.round(Math.random()*1000)},
-                            //     {name: '澳门',value: Math.round(Math.random()*1000)}
+                            //     {name: '台湾',value: 0},
+                            //     {name: '香港',value: 0},
+                            //     {name: '澳门',value: 0}
                             // ]
                         }, 
                     ]

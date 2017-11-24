@@ -1,0 +1,15 @@
+.back-icon{
+	cursor: pointer;
+	color: blue;
+}
+.back{
+	cursor: pointer;
+	color: blue;
+	margin-left: 5px
+}
+.detail_bg{
+  height: 120px;
+  width: 100%;
+  background-size: cover;
+  background-image: url("../images/detail_bg.png");
+}

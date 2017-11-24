@@ -10,20 +10,26 @@
      width:100%;
 }*/
 #date{
-	position: fixed;	
-	right:6%;
-	top:6%;
+	/*position: fixed;	
+	right:7.2%;
+	top:8%;*/
+	position: absolute;
+	right:98px;
+	top:50px;
 	font-weight: bold;
-	color:#00F0FF;
-	font-size: small;
+	color:#00B0E2;
+	font-size: 9px;
 }
 #time{
-	position: fixed;	
-	right:4%;
-	top:10%;
+	/*position: fixed;	
+	right:6.8%;
+	top:12%;*/
+	position: absolute;
+	right:92px;
+	top:75px;
 	font-weight: bold;
 	color:#00F0FF;
-	font-size:xx-large;
+	font-size:20px;
 }
 
 .first{	
@@ -32,6 +38,8 @@
 	height: 100%;
 	position:fixed;
 	z-index: 20;
+	top:0px;
+	left:0px;
 }
 
 .second{	
@@ -41,7 +49,8 @@
 	position:fixed;
 	z-index: 10;
 	background:url("../images/link1.gif") fixed  left top no-repeat;
-	background-size: 100% ;    
+	background-size: 100% ;  
+	background-color: black;  
 }
 
 .third{	

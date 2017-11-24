@@ -26,7 +26,7 @@ public class ViewController {
 	@ResponseBody
 	@RequestMapping("/a")
 	public String test(){
-		int token = data.alert();
+		//int token = data.sendMsg();
 		return "ss";
 	}
 	
@@ -57,8 +57,11 @@ public class ViewController {
 	@RequestMapping("/2")
 	public String page2(){
 		String name = "linkMoni2";
-		if(data.getState() == DataGenerator.UP)
-			name =  "linkMoni1";		
+		if(data.getState() == DataGenerator.UP){
+			name =  "linkMoni1";
+			data.sendMsg(DataGenerator.ADVICE);
+		}
+					
 		logger.info("open "+name);		
 		return name;
 	}
@@ -68,6 +71,13 @@ public class ViewController {
 	public String page3(){
 		logger.info("open autoScale");
 		return "autoScale";
+	}
+	
+	@ApiOperation(value = "查询当前页面号", notes = "")
+	@RequestMapping("/finish")
+	@ResponseBody public Object finish(){	
+		data.sendMsg(DataGenerator.FINISH);
+		return page;
 	}
 	
 	@ApiOperation(value = "查询当前页面号", notes = "")

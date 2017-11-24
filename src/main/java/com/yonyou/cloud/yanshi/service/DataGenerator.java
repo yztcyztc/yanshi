@@ -21,13 +21,10 @@ public class DataGenerator {
 	private Random rand = new Random();
 	
 	final private float[] base = {0.05f,1.5f,3,4,5,7,8,9};
-//	final private int[][] basedata1 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//访问量0~50
-//									   {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9}};//900-1000
-//	final private float[][] basedata2 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//响应时间0~50ms
-//										 {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9}};//900-1000
-//	final private float[][] basedata3 = {{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},//流量0~50
-//										 {9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9}};//900-1000
-
+	final public static String ALERT = "警报警报，一个应用负载过高！建议进入全链路监控进行查看。";
+	final public static String ADVICE = "当前链路中有一个应用正在报警，建议进入应用管理进行扩容操作。";
+	final public static String FINISH = "扩容完成。";
+	
 	private int count = 0,level=0,speed = 1;
 	
 	public int data1 = 0;
@@ -58,7 +55,7 @@ public class DataGenerator {
 	        		level ++;
 	        		if(level==5){
 	        			System.out.println("alert!");
-	        			//alert();
+	        			sendMsg(ALERT);
 	        		}
 	        	}      		
         	}
@@ -86,11 +83,11 @@ public class DataGenerator {
 		state = EXPAND;
 	}
 	
-	public int alert(){	
+	public int sendMsg(String msg){	
 		int code = -1;
 		JSONObject json = new JSONObject();
 		json.element("from","molipubaccount.moli_pre.moli");
-		json.element("content","{\"content\": \"嘿，老哥，你的应用负载过高了！建议进入应用管理进行扩容操作。\" }");
+		json.element("content","{\"content\": \""+msg+"\" }");
 		json.element("extend", "hulianwangyanshi");
 		JSONObject j= new JSONObject();
 		try {
@@ -116,7 +113,7 @@ public class DataGenerator {
 			j= JSONObject.fromObject(baos.toString());
 			
 			code = con.getResponseCode();
-			System.out.println("alert code:"+code);
+			System.out.println("msg code:"+code);
 			con.disconnect();			
 			//return code;
 		} catch (IOException e) {			
@@ -153,10 +150,10 @@ public class DataGenerator {
 			}
 			JSONObject j= JSONObject.fromObject(baos.toString());
 			int code = con.getResponseCode();
-			System.out.println("token code:"+code);
+		//	System.out.println("token code:"+code);
 			con.disconnect();
 			token = j.get("token").toString();
-			System.out.println("token: "+token);
+			System.out.println("token code:"+code+"|token: "+token);
 			//return code;
 		} catch (IOException e) {
 			// TODO 自动生成的 catch 块

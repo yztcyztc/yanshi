@@ -5,33 +5,55 @@
 		<title>应用监控</title>
 		<link rel="stylesheet" media="screen" href="styles/appmoni.css"/>
 	</head>
-	<body>
+	<body style="padding: 0px;margin: 0px;border: 0px;">
 		<div id="graph">
-			<h3 style="text-align:center">应用[演示]监控</h3>
+			<div class="monitor-header">
+		        <div class="cross"></div>
+		        <div class="title">
+		          用友云开发者中心-应用监控
+		        </div>
+		        <div class="cross-footer" >
+		        	<div class="app-name">玩事荣耀红包</div>
+		        </div>         
+		    </div>
+		     <div class="monitor-time">
+		       <div className="time-content">
+		          <div id="date" class="date">
+		    
+		          </div>
+		          <div id="time" class="time">
+		           
+		          </div>
+		       </div>
+	      	</div>
                
                <div class="top-left">
-					<div id="container2" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+					<div id="container2" style="height:400px;width:600px;border:1px solid #006681; borderRadius:10px;"></div>
 				<!-- 	<div>响应时间（RT）曲线</div> -->
 				</div>
 				
 				<div class="top-right" >
-					<div id="map" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+					<div id="map" style="height:400px;width:600px;border:1px solid #006681;"></div>
 				<!-- 	<div>全国地区访问量</div> -->
 				</div>
 				
 				<div class="bottom-left ">
-					<div id="container1" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
+					<div id="container1" style="height:400px;width:600px;border:1px solid #006681;"></div>
 					<!-- <div>用户访问量（UV）曲线</div> -->
 				</div>
 				
 				<div class="bottom-right">
-					<div id="container3" style="height:400px;width:550px;border:1px solid #ccc;padding:10px;"></div>
-					<!-- <div>网站流量曲线</div> -->
+					<div id="container3" style="height:400px;width:600px;border:1px solid #006681;"></div>
 				</div>
-
+					<!-- <div>网站流量曲线</div> -->
+				<div className="monitor-footer">
+			        <div className="btn-left"></div>
+			        <div className="btn-right"></div>					
+				</div>
 				<span id="preValue1" style="visibility:hidden"> ${pre1}</span>
 				<span id="preValue2" style="visibility:hidden"> ${pre2}</span>
-				<span id="preValue3" style="visibility:hidden"> ${pre3}</span>			
+				<span id="preValue3" style="visibility:hidden"> ${pre3}</span>		
+
 		</div>
 		<script type="text/javascript" src="map/jquery-3.0.0.js"></script> 
 		<script type="text/javascript" src="map/highcharts.js"></script>
