@@ -5,7 +5,7 @@
 		<title>应用监控</title>
 		<link rel="stylesheet" media="screen" href="styles/appmoni.css"/>
 	</head>
-	<body style="padding: 0px;margin: 0px;border: 0px;">
+	<body>
 		<div id="graph">
 			<div class="monitor-header">
 		        <div class="cross"></div>
@@ -15,50 +15,64 @@
 		        <div class="cross-footer" >
 		        	<div class="app-name">玩事荣耀红包</div>
 		        </div>         
-		    </div>
-		     <div class="monitor-time">
-		       <div className="time-content">
-		          <div id="date" class="date">
 		    
-		          </div>
-		          <div id="time" class="time">
-		           
-		          </div>
-		       </div>
-	      	</div>
+			     <div class="monitor-time">
+			       <div class="time-content">
+			          <div id="date" class="date">
+			    
+			          </div>
+			          <div id="time" class="time">
+			           
+			          </div>
+			       </div>
+		     	</div>
+	     	</div>
                
-               <div class="top-left">
-					<div id="container2" style="height:400px;width:600px;border:1px solid #006681; borderRadius:10px;"></div>
+               <div class="item top-left">
+					<div id="container2" style="height:4rem;width:6rem;border:1px solid #006681; borderRadius:10px;"></div>
 				<!-- 	<div>响应时间（RT）曲线</div> -->
 				</div>
 				
-				<div class="top-right" >
-					<div id="map" style="height:400px;width:600px;border:1px solid #006681;"></div>
+				<div class="item top-right" >
+					<div id="map" style="height:4rem;width:6rem;border:1px solid #006681;"></div>
 				<!-- 	<div>全国地区访问量</div> -->
 				</div>
 				
-				<div class="bottom-left ">
-					<div id="container1" style="height:400px;width:600px;border:1px solid #006681;"></div>
+				<div class="item bottom-left ">
+					<div id="container1" style="height:4rem;width:6rem;border:1px solid #006681;"></div>
 					<!-- <div>用户访问量（UV）曲线</div> -->
 				</div>
 				
-				<div class="bottom-right">
-					<div id="container3" style="height:400px;width:600px;border:1px solid #006681;"></div>
+				<div class="item bottom-right">
+					<div id="container3" style="height:4rem;width:6rem;border:1px solid #006681;"></div>
 				</div>
-					<!-- <div>网站流量曲线</div> -->
-				<div className="monitor-footer">
-			        <div className="btn-left"></div>
-			        <div className="btn-right"></div>					
-				</div>
-				<span id="preValue1" style="visibility:hidden"> ${pre1}</span>
-				<span id="preValue2" style="visibility:hidden"> ${pre2}</span>
-				<span id="preValue3" style="visibility:hidden"> ${pre3}</span>		
+				
 
+				<span id="preValue1" style="display: none"> ${pre1}</span>
+				<span id="preValue2" style="display: none"> ${pre2}</span>
+				<span id="preValue3" style="display: none"> ${pre3}</span>		
+
+					<!-- <div>网站流量曲线</div> -->
+				<div class="monitor-footer">
+			        <div class="btn-left"></div>
+			        <div class="btn-right"></div>	
+			        <div class="scripts">developer.yonyou.com</div>				
+				</div>
+				
 		</div>
 		<script type="text/javascript" src="map/jquery-3.0.0.js"></script> 
 		<script type="text/javascript" src="map/highcharts.js"></script>
 		<script type="text/javascript" src="map/graph.js"></script>
 		<script src="map/echarts.js"></script>
+		<script>
+			document.addEventListener('DOMContentLoaded',function(){
+				var width = document.body.clientWidth;
+				var rem = width/13;
+				document.documentElement.style.fontSize=rem+'px';
+				document.body.style.visibility='visible';
+
+			})
+		</script>
 		
 	</body>
 </html>

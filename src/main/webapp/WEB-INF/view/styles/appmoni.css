@@ -1,39 +1,42 @@
+html{
+	font-size: 100px;
+}
+body{
+	padding: 0;
+	margin:0;
+	outline: none;
+	visibility: hidden;
+	background: url("../images/bg-texture.png") no-repeat;
+    background-color: rgb(1,18,35);
+    background-size: cover;
+}
+.item{
+	display: inline-block;
+	margin: 0.1rem;
+}
 .top-left{
-	/*width: 45%;
-	height:45%;*/
-	float: left;
-	margin: 2% 2% 3% 3%;
 	text-align: center;	
+	margin-top: 0.5rem;
 }
 .top-right{
-	/*width: 45%;
-	height:45%;*/
-	float: right;
-	margin:  2% 3% 3% 2%;
+	background-color: rgb(0,30,47);
+    opacity: 1;
 	text-align: center;
-	background-color: rgba(0,30,47,22);
+	margin-top: 0.5rem;
 }
 .bottom-left{
-	/*width: 45%;
-	height:45%;*/
-	float: left;
-	margin:  2% 2% 3% 3%;
 	text-align: center;
 }
 .bottom-right{
-	
-	/*width: 45%;
-	height:45%;*/
-	float: right;
-	margin:  2% 3% 3% 2%;
 	text-align: center;
 }
 
 #graph{
-	background: url("../images/bg-texture.png") no-repeat;
-    background-color: rgb(1,18,35);
-    background-size: cover;	
-	overflow: auto;
+	width: 100%;
+	height: 100%;
+		
+	position: relative;
+
 }
 
 
@@ -58,14 +61,11 @@
   }
 
   .title {
-  	/*text-align: center;
-  	padding-top: 8px;
-  	padding-left: -5px;*/
   	position: absolute;
   	height: 50px;
     line-height: 50px;
     color: #00f0ff;
-    font-size: 28px;
+    font-size: 0.3rem;
     left: 450px;
   }  
 
@@ -86,21 +86,17 @@
 	width: 110px;
     height: 30px;
     line-height: 20px;
-    font-size: 12px;
+    font-size: 18px;
 	color: #00f0ff;
-	font-weight: bold;
 }
   .monitor-time{
-	  position: absolute;
-	  top:0;
-	  right: 0;
-	  width: 19%;
-	  height: 25%;
+	  display: inline-block;
+	  width: 2.5rem;
+	  height: 2.5rem;
+	  margin-left: 8.8rem;
+	  margin-top: -0.2rem;
 	  background: url("../images/time-texture.png") no-repeat;
 	  background-size: cover;
-	  color: #00F0FF;
-	  display: flex;
-	 
 	  }
 
 	.time-content{
@@ -109,8 +105,8 @@
 
 	.time{
 		position: absolute;
-		right:92px;
-		top:75px;
+		right: 0.75rem;
+    	top: 1.0rem;
 		font-weight: bold;
 		color:#00F0FF;
 		font-size:20px;
@@ -118,32 +114,48 @@
 
 	.date{
 		position: absolute;
-		right:98px;
-		top:50px;
+		right: 0.8rem;
+    	top: 0.8rem;
 		font-weight: bold;
 		color:#00B0E2;
-		font-size: 9px;
+		font-size: 12px;
 	}
 
-	.monitor-footer{
+	 .monitor-footer{
 	  width: 100%;
-	  height: 62px;
-	  position: relative;
+	  height: 1.2rem;
+	  bottom: 0;
+	  position: absolute;
 	}
+
 	  .btn-left{
 	    position: absolute;
-	    left: 0px;
-	    bottom: 25px;
-	    width: 27px;
-	    height: 46px;
+	    left: 0rem;
+    	width: 0.3rem;
+    	height: 0.5rem;
+    	margin-top: 1.2rem;
+    	margin-bottom: -0.2rem;
 	    background: url("../images/leftConner-texture.png") no-repeat;
+	    background-size: contain;
 	  }
+
 	  .btn-right{
-	    position: absolute;
-	    right: 0;
-	    bottom: 25px;
-	    width: 290px;
-	    height: 62px;
-	    background: url("../images/rightConner-texture.png") no-repeat;
+	        position: absolute;
+		    right: 0rem;
+		    width: 4rem;
+		    height: 1.2rem;
+		    background: url(../images/rightConner-texture.png) no-repeat;
+		    background-size: contain;
+		    text-align: center;
+		    
+		    margin-top: 1.2rem;
+		    margin-bottom: -0.2rem
 	  }
-	
+	.scripts{
+		position: absolute;
+		right: 2rem;
+		top: 1.8rem;
+		font-size: 16px;
+		color:  #00F0FF;
+		text-align: center;
+	}

@@ -1,5 +1,9 @@
 package com.yonyou.cloud.yanshi.controller;
 
+
+import java.util.Timer;
+import java.util.TimerTask;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,15 +22,36 @@ public class ViewController {
 
 	Logger logger = LoggerFactory.getLogger(getClass());
 	int page = 2;
+	boolean flag = true;
+	boolean flag1 = true;
+	Timer tt = new Timer();
+	Timer t = new Timer();
 	
-	
+//Timer tt  = new T
 	@Autowired
 	DataGenerator data;
 	
+	public ViewController(){
+		//t.run();
+		
+	}	
 	@ResponseBody
 	@RequestMapping("/a")
-	public String test(){
-		//int token = data.sendMsg();
+	public String test() throws InterruptedException{
+		//t.notify();
+		if(flag){
+			flag =false;
+			tt.schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					// TODO 自动生成的方法存根
+					flag = true;
+				}
+			}, 5000);
+			System.out.println("timer");
+		}
+			
 		return "ss";
 	}
 	
@@ -59,7 +84,20 @@ public class ViewController {
 		String name = "linkMoni2";
 		if(data.getState() == DataGenerator.UP){
 			name =  "linkMoni1";
-			data.sendMsg(DataGenerator.ADVICE);
+			if(flag){
+				flag =false;
+				tt.schedule(new TimerTask() {
+					
+					@Override
+					public void run() {
+						// TODO 自动生成的方法存根
+						flag = true;
+					}
+				}, 5000);
+				System.out.println("advice");
+				data.sendMsg(DataGenerator.ADVICE);
+			}
+			
 		}
 					
 		logger.info("open "+name);		
@@ -70,13 +108,32 @@ public class ViewController {
 	@RequestMapping("/3")
 	public String page3(){
 		logger.info("open autoScale");
-		return "autoScale";
+		return "scale1";
+	}
+	
+	@ApiOperation(value = "访问应用管理页面", notes = "")
+	@RequestMapping("/4")
+	public String page4(){
+		logger.info("open autoScale");
+		return "scale2";
 	}
 	
 	@ApiOperation(value = "查询当前页面号", notes = "")
 	@RequestMapping("/finish")
-	@ResponseBody public Object finish(){	
-		data.sendMsg(DataGenerator.FINISH);
+	@ResponseBody public Object finish(){
+		if(flag1){
+			flag1 =false;
+			t.schedule(new TimerTask() {
+				
+				@Override
+				public void run() {
+					// TODO 自动生成的方法存根
+					flag1 = true;
+				}
+			}, 5000);
+			System.out.println("finish");
+			data.sendMsg(DataGenerator.FINISH);
+		}		
 		return page;
 	}
 	

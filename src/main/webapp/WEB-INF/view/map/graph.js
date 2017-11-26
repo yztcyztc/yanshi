@@ -56,6 +56,7 @@ $(document).ready(function() {
    };   
    var xAxis = {
       type: 'datetime',
+      tickColor:'#006781',
       tickPixelInterval: 150,
       labels: {
     	rotation: -30,
@@ -65,8 +66,8 @@ $(document).ready(function() {
             color:'#0085C8'         
           },
       },
-
-     
+      lineColor:'#006781',
+      lineWidth:1
    };
    var yAxis1 = {
       title: {
@@ -88,7 +89,7 @@ $(document).ready(function() {
             color: '#808080'
         }],
       gridLineWidth:1,
-      gridLineColor:"#00F7FF",
+      gridLineColor:"#00314C",
    };
    var tooltip = {
       formatter: function () {
@@ -134,20 +135,20 @@ $(document).ready(function() {
          return data;
       }()),
        zones: [{
-        value:1800,
-        color:'#00F0FF'
-       },{
-        value:2000,
-        color:'#006C79'
-       },{
-        value:2300,
-        color:'#00A1A9'
-       },{
-        value:2600,
-        color:'#00DCD4'
-       },{
+       //  value:1800,
+       //  color:'#002333'
+       // },{
+       //  value:2000,
+       //  color:'#005664'
+       // },{
+       //  value:2300,
+       //  color:'#00A1A9'
+       // },{
+       //  value:2600,
+       //  color:'#00DCD4'
+       // },{
         value:10000,
-        color: '#00F3EC'
+        color: '#005161'
          }]     
    }];     
       
@@ -187,7 +188,7 @@ var chart2  = {
    };
 
    var title2 = {
-      text: '响应时间(RT）曲线' ,
+      text: '响应时间（RT）曲线' ,
        style: {fontSize:"18px",color:"#00F0FF"}  
    }; 
   
@@ -209,10 +210,10 @@ var chart2  = {
           value: 3000,
           width: 2,
           color: 'red',
-          dashStyle :'Dot'
+          dashStyle :'solid'
        }],
       gridLineWidth:1,
-      gridLineColor:"#00A9FA",
+      gridLineColor:"#00314C",
    };
  
    var series2= [{
@@ -231,29 +232,17 @@ var chart2  = {
          return data;
       }()),
        zones: [{
-        value:1800,
-        color:'#00F0FF'
-       },{
-        value:2000,
-        color:'#006C79'
-       },{
-        value:2300,
-        color:'#00A1A9'
-       },{
-        value:2600,
-        color:'#00DCD4'
-       },{
-        value:2800,
-        color:'#4CC17B'
-       },{
         value:2900,
-        color:'#A0AD26'
+        color:'#005161'
        },{
-        value:3200,
-        color:'#C17318'
+        value:3000,
+        color:'#C0781B'
        },{
-        value:6000,
-        color: '#F51203'
+        value:3100,
+        color: '#DA470F'
+         },{
+        value:10000,
+        color:'#F51304'
          }]    
    }];               
       
@@ -317,7 +306,7 @@ var chart3  = {
          color: '#808080'
       }],
       gridLineWidth:1,
-      gridLineColor:"#00F7FF",
+      gridLineColor:"#00314C",
    };
  
    var series3= [{
@@ -334,21 +323,21 @@ var chart3  = {
          return data;
       }()),
        zones: [{
-        value:1800,
-        color:'#00F0FF'
-       },{
-        value:2000,
-        color:'#006C79'
-       },{
-        value:2300,
-        color:'#00A1A9'
-       },{
-        value:2600,
-        color:'#00DCD4'
-       },{
+       //  value:1800,
+       //  color:'#002333'
+       // },{
+       //  value:2000,
+       //  color:'#005664'
+       // },{
+       //  value:2300,
+       //  color:'#00A1A9'
+       // },{
+       //  value:2600,
+       //  color:'#00DCD4'
+       // },{
         value:10000,
-        color: '#00F3EC'
-         }]     
+        color: '#005161'
+         }]      
    }];     
    json3.chart = chart3; 
    json3.title = title3;     
@@ -437,8 +426,8 @@ var chart3  = {
                         x:'center',
                         textStyle:{
                           color: "#00F0FF",
-                          fontSize:'18',
-                          fontWeight:'22'
+                          fontSize:'16',
+                        
                         }
                     },
                     tooltip : {

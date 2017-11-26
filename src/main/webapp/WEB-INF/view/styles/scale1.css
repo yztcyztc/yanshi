@@ -1,15 +1,289 @@
-.back-icon{
-	cursor: pointer;
-	color: blue;
+body{
+	margin:0;
+	padding: 0;
+	outline: none;
+	background: url("../images/bg-texture.png") no-repeat;
+    background-color: rgb(1,18,35);
+    background-size: cover;
 }
-.back{
-	cursor: pointer;
-	color: blue;
-	margin-left: 5px
+#scale{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	
 }
-.detail_bg{
-  height: 120px;
-  width: 100%;
+
+.manage-header {
+	width: 100%;
+	height: 100px;
+	padding-top: 15px;
+	padding-left: 100px;
+  }
+   
+  .cross {
+	text-align: center;
+	padding-top: 15px;
+	padding-left: 100px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 70px;
+	width: 720px;
+	background: url("../images/ttitle-left-texture.png") no-repeat;
+	background-size: contain;
+  }
+
+  .title {
+  	position: absolute;
+  	height: 50px;
+    line-height: 50px;
+    color: #00f0ff;
+    font-size: 28px;
+    left: 450px;
+  }  
+
+  .cross-footer {
+    position: absolute;
+    left: 700px;
+    top: 50px;
+    height: 27px;
+    width: 250px;
+    background: url("../images/title-right-texture.png") no-repeat;
+    background-size: cover;
+  }
+
+.app-name{
+	position: absolute;
+    top: 30px;
+    right: 20px;
+	width: 110px;
+    height: 30px;
+    line-height: 20px;
+    font-size: 12px;
+	color: #00f0ff;
+	font-weight: bold;
+}
+.tile{
+	width: 100%;
+	height: 100px;
+	padding-top: 15px;
+	padding-left: 100px;
+  }
+
+.tile-cricle {
+	position: absolute;
+	top:125px;
+	left: 30px;
+	height: 100px;
+	width: 100px;
+  	border-radius: 1000px;
+  	background-color: #212531;
+  	padding: 3px;
+}
+
+.tile-img {
+  background: url("../images/wanshi.png");
   background-size: cover;
-  background-image: url("../images/detail_bg.png");
+  height: 85px;
+  width: 85px;
+  margin-left: 8px;
+  margin-top: 10px;
+}
+
+.app-detail{
+	position: absolute;
+	top: 150px;
+	left: 150px;
+	height: 60px;
+	width: 220px;
+}
+.name{
+	font-size: 16px;
+	color: #fff;
+	font-weight: bold;
+	margin-top:-10px;
+}
+.progress{
+	margin-top: -30px
+}
+.progress1{
+	margin-top: -30px
+	width:100%;
+	height: 30%;
+}
+.aa{
+
+    height:12px;
+    width:220px;
+    background-color: #74d04c;
+    margin-top: 17px;
+    border: 1px solid #4c8932;
+    border-radius: 15px;
+}
+
+.time1{
+	font-size: 14px;
+	color:#ccc;
+	height: 20px;
+    width: 220px;
+    margin-top: 7px;
+}
+.time{
+	font-size: 14px;
+	color:#ccc;
+	height: 20px;
+    width: 220px;
+    margin-top: -34px
+}
+#time{
+	margin-left: 8px
+}
+.buttons{
+	position: absolute;
+	right:25px;
+	top:125px;
+	height: 90px;
+	width: 650px 
+}
+.button{
+	position: absolute;
+	width: 90px;
+	height: 90px;
+	top:0;
+	background-color: #00000059;
+    opacity: 0.7;
+
+}
+.shelves{	
+	right: 0;
+}
+.authmanage{
+	right: 91px;
+}
+.rollback{
+	right: 182px;
+}
+.upgrade{
+	right:273px;
+}
+.destroy{
+	right: 364px;
+}
+.restart{
+	right: 455px;
+}
+.pause{
+	right: 546px;
+}
+.cl1{
+    font-family: "cl" !important;
+    font-size: 20px;
+    font-style: normal;
+     position: absolute;
+    top: 10px; 
+    left: 35px;
+}
+
+.icon{
+	color: #fff;
+	height: 50px;
+	text-align: center;
+}
+.button-name{
+	text-align: center;
+	color:#fff;
+	font-size: 16px;
+}
+
+.info{
+	padding: 0 40px;
+	width: 100%;
+	height: 100px;
+}
+.left-info{
+	position: absolute;
+	padding-left: 0!important;
+	width: 50%;
+	height: 100px;
+	left: 0
+}
+
+.list1{
+	position: absolute;
+	width: 80%;
+	height: 50%;
+	margin: 0 50px;
+	margin-top: 15px;
+}
+.list2{
+	position: absolute;
+	width: 80%;
+	height: 50%;
+	margin: 0 50px;
+	margin-top: 65px;
+}
+.lable{
+	display: inline-block;
+    color: #9a9a9a;
+    width: 100px;
+    height: 20px;
+    line-height: 20px;
+    border-left: 3px solid #dd3730;
+    padding-left: 10px;
+}
+.value{
+	width: 350px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #4388c7;
+}
+.right-info{
+	position: absolute;
+	padding-right: 0!important;
+	width: 50%;
+	height: 100px;
+	right: 0;
+}
+		
+.line{
+	position: absolute;
+	width: 83%;
+	color: #9a9a9a;
+	left:11%;
+}
+.line-red{
+	position: absolute;
+	width: 7%;
+	background-color: red;
+	left:4%;
+	height: 2px;
+}
+.tabs{
+	position: absolute;
+	width: 83%;
+	left: 2%;
+	height: 20px;
+	margin-top: 18px;
+}
+.tab{
+margin-left: 5%;
+color: #ccc
+}
+
+.pics{
+	width: 95%;
+	height: 200px;
+	margin-top: 60px;
+	margin-left: 3%;
+}
+.pic{
+	width: 100px;
+	height: 100px;
+	border: 1px solid #616161;
+	margin-left:1%;
+}
+.pic2,.pic3, .pic4, .pic5, .pic6, .pic7, .pic8, .pic9, .pic10, .pic11
+,.pic12,.pic13,.pic14,.pic15,.pic16,.pic17,.pic18,.pic19,.pic20{
+	visibility: hidden;
 }

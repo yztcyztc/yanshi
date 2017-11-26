@@ -113,7 +113,7 @@ public class DataGenerator {
 			j= JSONObject.fromObject(baos.toString());
 			
 			code = con.getResponseCode();
-			System.out.println("msg code:"+code);
+			System.out.println(msg+"|msg code:"+code);
 			con.disconnect();			
 			//return code;
 		} catch (IOException e) {			
