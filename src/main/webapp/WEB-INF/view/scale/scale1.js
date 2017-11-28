@@ -89,11 +89,6 @@ $(function() {
           $("#instancenum").attr("value","  20");
           $("#health").text(" 健康");
           $("#health").css("color","#74d04c");
-          $.ajax({ 
-              type: "get", 
-              async: false, 
-              url: "/yanshi/view/finish",
-           }); 
 
         });
       }, 2000);
@@ -129,10 +124,12 @@ $(function() {
             success: function(data) { 
               flag = data ;
               if(flag){
-               clearInterval(timer);
+                clearInterval(timer);
                window.location.href="/yanshi/view/4"
               }
             }
         }); 
     },1000)
+
+    
  })

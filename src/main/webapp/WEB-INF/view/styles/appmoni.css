@@ -13,6 +13,7 @@ body{
 .item{
 	display: inline-block;
 	margin: 0.1rem;
+
 }
 .top-left{
 	text-align: center;	
@@ -93,8 +94,8 @@ body{
 	  display: inline-block;
 	  width: 2.5rem;
 	  height: 2.5rem;
-	  margin-left: 8.8rem;
-	  margin-top: -0.2rem;
+	  margin-left: 9.0rem;
+	  margin-top: -0.3rem;
 	  background: url("../images/time-texture.png") no-repeat;
 	  background-size: cover;
 	  }
