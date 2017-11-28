@@ -232,33 +232,18 @@ var chart2  = {
          return data;
       }()),
        zones: [{
-        value:1800,
-        color:'#005161'
-       },{
-        value:2000,
-        color:'#008794'
-       },{
-        value:2300,
-        color:'#00B4C1'
-       },{
-        value:2600,
-        color:'#16C3B8'
-       },{
-        value:2800,
-        color:'#66C061'
-       },{
-        value:2900,
-        color:'#85BE3F'
-       },{
-        value:3000,
-        color:'#C0781B'
-       },{
-        value:3100,
-        color: '#DA470F'
-         },{
-        value:10000,
-        color:'#F51304'
-         }]    
+           value:2900,
+           color:'#005161'
+          },{
+           value:3000,
+           color:'#C0781B'
+          },{
+           value:3100,
+           color: '#DA470F'
+            },{
+           value:10000,
+           color:'#F51304'
+            }]    
    }];               
       
    json2.chart = chart2; 
