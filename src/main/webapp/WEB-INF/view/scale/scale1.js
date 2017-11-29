@@ -26,7 +26,7 @@ var i = 2;
 var timer1 = setInterval(function(){
 var id = "pic" + i;
  $("." + id).css("visibility","visible")
- if(i < 120){
+ if(i < 34){
  	 i++;
  	}else{
 
@@ -86,7 +86,7 @@ $(function() {
         $('#progress_bar .ui-progress').animateProgress(100, function() {
           $('#main_content').slideDown();
           $('#fork_me').fadeIn();
-          $("#instancenum").attr("value","  20");
+          $("#instancenum").attr("value","  42");
           $("#health").text(" 健康");
           $("#health").css("color","#74d04c");
 

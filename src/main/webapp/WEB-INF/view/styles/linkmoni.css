@@ -14,22 +14,22 @@
 	right:7.2%;
 	top:8%;*/
 	position: absolute;
-	right:98px;
-	top:50px;
+	right:6.9%;
+	top:5%;
 	font-weight: bold;
 	color:#00B0E2;
-	font-size: 9px;
+	font-size: 20px;
 }
 #time{
 	/*position: fixed;	
 	right:6.8%;
 	top:12%;*/
 	position: absolute;
-	right:92px;
-	top:75px;
+	right:6.4%;
+	top:8%;
 	font-weight: bold;
 	color:#00F0FF;
-	font-size:20px;
+	font-size:30px;
 }
 
 .first{	

@@ -67,13 +67,13 @@ body{
     line-height: 50px;
     color: #00f0ff;
     font-size: 0.3rem;
-    left: 450px;
+    left: 35%;
   }  
 
   .cross-footer {
     position: absolute;
-    left: 700px;
-    top: 50px;
+    left: 55%;
+    top: 4%;
     height: 27px;
     width: 250px;
     background: url("../images/title-right-texture.png") no-repeat;
@@ -106,20 +106,20 @@ body{
 
 	.time{
 		position: absolute;
-		right: 0.75rem;
-    	top: 1.0rem;
+		right: 0.94rem;
+    	top: 0.8rem;
 		font-weight: bold;
 		color:#00F0FF;
-		font-size:20px;
+		font-size:30px;
 	 }
 
 	.date{
 		position: absolute;
-		right: 0.8rem;
-    	top: 0.8rem;
+		right: 0.99rem;
+    	top: 0.6rem;
 		font-weight: bold;
 		color:#00B0E2;
-		font-size: 12px;
+		font-size: 20px;
 	}
 
 	 .monitor-footer{
