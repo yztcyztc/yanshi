@@ -4,7 +4,7 @@ $(document).ready(function() {
  	var year = myDate.getFullYear();
  	var month = myDate.getMonth();
  	var date = myDate.getDate();
- 	var str1 = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + date ;
+ 	var str1 = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + ("0" + date).slice(-2)  ;
 
  	var hour = ("0" + myDate.getHours()).slice(-2);
 	var minute = ("0" + myDate.getMinutes()).slice(-2);

@@ -4,7 +4,7 @@ $(document).ready(function() {
  	var year = myDate.getFullYear();
  	var month = myDate.getMonth();
  	var date = myDate.getDate();
- 	var str1 = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + date ;
+ 	var str1 = year + "-" + ("0" + (month + 1)).slice(-2) + "-" + ("0" + date).slice(-2);
 
  	var hour = ("0" + myDate.getHours()).slice(-2);
 	var minute = ("0" + myDate.getMinutes()).slice(-2);
@@ -25,7 +25,9 @@ $(document).ready(function() {
 var i = 2; 
 var timer1 = setInterval(function(){
 var id = "pic" + i;
- $("." + id).css("visibility","visible")
+ $("." + id).css("visibility","visible");
+ $("." + id).css("background-color","rgba(202, 190, 198, 0.5)")
+ 
  if(i < 120){
  	 i++;
  	}else{
@@ -41,7 +43,7 @@ var id = "pic" + i;
       $(this).animate({
         width: progress+'%'
       }, {
-        duration: 2000, 
+        duration: 9000, ////////////////
         easing: 'swing',
         step: function( progress ){
           var labelEl = $('.ui-label', this),
@@ -53,7 +55,29 @@ var id = "pic" + i;
               labelEl.fadeIn();
             };
           }
+
+          var percent = Math.ceil(progress);
+          if(percent == 20){
+             $(".pic2,.pic3,.pic31,.pic32").css("background-color","rgba(0,0,0,0)");
+             $("#instancenum").attr("value","  5");
+          }
+           if(percent == 40){
+             $(".pic16,.pic17,.pic8,.pic9").css("background-color","rgba(0,0,0,0)");
+             $("#instancenum").attr("value","  9");
+          }
+          if(percent == 60){
+             $(".pic10,.pic11,.pic12,.pic13,.pic4,.pic5,.pic6,.pic7,.pic18,.pic19,.pic20").css("background-color","rgba(0,0,0,0)");
+             $("#instancenum").attr("value","  20");
+          }
+          if(percent == 80){
+             $(".pic21,.pic22,.pic33,.pic34,.pic35,.pic36,.pic37,.pic28,.pic29,.pic30").css("background-color","rgba(0,0,0,0)");
+             $("#instancenum").attr("value","  30");
+           }
           
+          if(percent == 100){
+             $(".pic15,.pic14,.pic41,.pic42,.pic23,.pic24,.pic25,.pic26,.pic27,.pic38,.pic39,.pic40").css("background-color","rgba(0,0,0,0)");
+             $("#instancenum").attr("value","  42");
+          }          
           if (Math.ceil(progress) == 100) {
             labelEl.text('');
             setTimeout(function() {
@@ -86,9 +110,11 @@ $(function() {
         $('#progress_bar .ui-progress').animateProgress(100, function() {
           $('#main_content').slideDown();
           $('#fork_me').fadeIn();
-          $("#instancenum").attr("value","  42");
+         // $("#instancenum").attr("value","  42");
           $("#health").text(" 健康");
           $("#health").css("color","#74d04c");
+          $(".pic2,.pic3").css("background-color","rgba(0,0,0,0)")
+
           $.ajax({ 
               type: "get", 
               async: false, 
@@ -96,7 +122,7 @@ $(function() {
            }); 
 
         });
-      }, 2000);
+      }, 9000);///////////////
     });
   }); 
 });
